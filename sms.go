@@ -295,7 +295,7 @@ func (c *SMSClient) SendMulti(phonenumbers []string, signname, templatecode, tem
 	if err != nil {
 		return e, err
 	}
-	if e.GetCode() != "" {
+	if e.GetCode() != "" && e.GetCode() != "OK" {
 		return e, errors.New(e.GetCode())
 	}
 	return e, nil
@@ -350,7 +350,7 @@ func (c *SMSClient) SendOne(phonenumber, signname, templatecode, templateparam, 
 	if err != nil {
 		return e, err
 	}
-	if e.GetCode() != "" {
+	if e.GetCode() != "" && e.GetCode() != "OK" {
 		return e, errors.New(e.GetCode())
 	}
 	return e, nil
